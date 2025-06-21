@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherNow - Professional Weather Forecast</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header__content">
+                    <div class="header__brand">
+                        <h1 class="header__title">🌤️ WeatherNow</h1>
+                        <div class="header__datetime" id="currentDateTime"></div>
+                    </div>
+                    <div class="header__search">
+                        <form class="search-form" id="searchForm">
+                            <input type="text" class="search-input form-control" id="searchInput" placeholder="Search for a city...">
+                            <button type="submit" class="btn btn--primary search-btn">Search</button>
+                        </form>
+                        <button class="btn btn--secondary location-btn" id="locationBtn">
+                            📍 Current Location
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Loading State -->
+        <div class="loading" id="loadingState">
+            <div class="loading__spinner"></div>
+            <p>Loading weather data...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-message hidden" id="errorMessage">
+            <div class="container">
+                <div class="error-content">
+                    <h3>⚠️ Error Loading Weather Data</h3>
+                    <p id="errorText">Please try again later.</p>
+                    <button class="btn btn--primary" id="retryBtn">Retry</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main" id="mainContent">
+            <div class="container">
+                <!-- Current Weather Section -->
+                <section class="current-weather">
+                    <div class="current-weather__main">
+                        <div class="current-weather__location">
+                            <h2 id="currentLocation">London, United Kingdom</h2>
+                            <p id="currentTime">Wednesday, 3:50 PM</p>
+                        </div>
+                        <div class="current-weather__temp">
+                            <span class="temperature" id="mainTemperature">18°</span>
+                            <div class="temp-unit-toggle">
+                                <button class="temp-toggle active" data-unit="C">°C</button>
+                                <button class="temp-toggle" data-unit="F">°F</button>
+                            </div>
+                        </div>
+                        <div class="current-weather__condition">
+                            <div class="weather-icon" id="mainWeatherIcon">⛅</div>
+                            <p id="weatherDescription">Partly Cloudy</p>
+                            <p class="feels-like">Feels like <span id="feelsLike">16°</span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Weather Grid -->
+                <div class="weather-grid">
+                    <!-- Weather Details -->
+                    <section class="weather-details card">
+                        <div class="card__body">
+                            <h3>Weather Details</h3>
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <span class="detail-label">Wind</span>
+                                    <span class="detail-value" id="windInfo">12 km/h SW</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Humidity</span>
+                                    <span class="detail-value" id="humidity">65%</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Pressure</span>
+                                    <span class="detail-value" id="pressure">1013 hPa</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Visibility</span>
+                                    <span class="detail-value" id="visibility">10 km</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">UV Index</span>
+                                    <span class="detail-value" id="uvIndex">4</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Cloud Cover</span>
+                                    <span class="detail-value" id="cloudCover">45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Sun Times -->
+                    <section class="sun-times card">
+                        <div class="card__body">
+                            <h3>Sun & Moon</h3>
+                            <div class="sun-times-grid">
+                                <div class="sun-item">
+                                    <span class="sun-label">🌅 Sunrise</span>
+                                    <span class="sun-value" id="sunrise">6:24 AM</span>
+                                </div>
+                                <div class="sun-item">
+                                    <span class="sun-label">🌇 Sunset</span>
+                                    <span class="sun-value" id="sunset">8:15 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Hourly Forecast -->
+                <section class="hourly-forecast card">
+                    <div class="card__body">
+                        <h3>24-Hour Forecast</h3>
+                        <div class="hourly-scroll" id="hourlyForecast">
+                            <!-- Hourly items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7-Day Forecast -->
+                <section class="daily-forecast card">
+                    <div class="card__body">
+                        <h3>7-Day Forecast</h3>
+                        <div class="daily-list" id="dailyForecast">
+                            <!-- Daily items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
